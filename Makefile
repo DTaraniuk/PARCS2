@@ -15,5 +15,5 @@ out/Invert.jar: out/parcs.jar src/Invert.java
 
 build: out/Main.jar out/Invert.jar
 
-run: out/Main.jar
+run: out/Main.jar out/Invert.jar
 	@cd out && java -cp 'parcs.jar:Main.jar' Main
