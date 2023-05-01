@@ -50,7 +50,7 @@ public class Main implements AM {
             }
 
             ArrayList<channel> channels = new ArrayList<channel>();
-            info.data.put(Invert.MatrixKey, augmentedMatrix);
+            info.data.put("Matrix", augmentedMatrix);
 
             for (int channel_num = 0; channel_num < n; channel_num += step) {
                 point p = info.createPoint();
