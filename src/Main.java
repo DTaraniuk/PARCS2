@@ -37,6 +37,8 @@ public class Main {
 
         double[][] matrix = GenerateMatrix(n);
 
+        PrintMatrix(matrix);
+
         // Create augmented matrix [A | I]
         double[][] augmentedMatrix = new double[n][2 * n];
         for (int i = 0; i < n; i++) {
@@ -119,20 +121,26 @@ public class Main {
             }
         }
 
+        PrintMatrix(augmentedMatrix);
+
         double[][] invertedMatrix = new double[n][n];
         for (int i = 0; i < n; i++) {
             System.arraycopy(augmentedMatrix[i], n, invertedMatrix[i], 0, n);
         }
 
         if (invertedMatrix != null) {
-            for (double[] row : invertedMatrix) {
-                for (double value : row) {
-                    System.out.printf("%8.3f", value);
-                }
-                System.out.println();
-            }
+            PrintMatrix(invertedMatrix);
         } else {
             System.out.println("Matrix is singular or not square.");
+        }
+    }
+
+    private void PrintMatrix(double[][] matrix){
+        for (double[] row : matrix) {
+            for (double value : row) {
+                System.out.printf("%8.3f", value);
+            }
+            System.out.println();
         }
     }
 
