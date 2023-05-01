@@ -70,8 +70,13 @@ public class Main implements AM {
             }
 
             ArrayList<channel> channels = new ArrayList<channel>();
-            if(augmentedMatrix == null)System.out.println("matrix is null");
-            if("Matrix" == null)System.out.println("matrix is null");
+            if(augmentedMatrix == null)System.out.println("aug matrix is null");
+            else System.out.println("aug matrix not null");
+
+
+            if(matrix == null)System.out.println("matrix is null");
+            else System.out.println("matrix not null");
+            info.data.put("Matrix", matrix);
             info.data.put("Matrix", augmentedMatrix);
 
             for (int channel_num = 0; channel_num < n; channel_num += step) {
