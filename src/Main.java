@@ -99,7 +99,7 @@ public class Main implements AM {
             int end = 0;
             for(var channel : channels){
                 var rows = (double[][])channel.readObject();
-                if(rows.length==0 || rows[0].length != 2*n){
+                if(rows == null || rows.length==0 || rows[0].length != 2*n){
                     System.out.println("matrix corrupted");
                     return;
                 }
