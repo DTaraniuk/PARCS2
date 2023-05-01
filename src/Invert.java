@@ -1,9 +1,6 @@
 import parcs.*;
 
 public class Invert implements AM {
-
-    public Invert(){}
-
     public void run(AMInfo amInfo) {
         double[][] matrix = (double[][]) amInfo.data.get("Matrix");
         int startRow = amInfo.parent.readInt();
