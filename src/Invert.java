@@ -14,5 +14,6 @@ public class Invert implements AM {
                 matrix[i][j] -= factor * matrix[pivotNum][j];
             }
         }
+        amInfo.parent.write(matrix);
     }
 }

@@ -70,20 +70,28 @@ public class Main implements AM {
                 augmentedMatrix[maxRow] = temp;
             }
 
-            ArrayList<channel> channels = new ArrayList<channel>();
+            var channels = new channel[workers];
+            var points = new point[workers];
             var pivotRow = augmentedMatrix[k];
 
-            for (int pos = 0; pos < n; pos += step) {
-                System.out.println("Channel number " + pos + "created");
+            //divide elimination job between channels
+            for (int i = 0; i < workers; i++) {
+                var startPos = step*i;
+                var endPos = Math.min((startPos + step), n); //calculate submatrix bounds
+
+                System.out.println("point covering from " + startPos + " to " + endPos);
+
                 var submatrix = new double[step][n];
-                System.arraycopy(augmentedMatrix, pos, submatrix, 0, pos+step>n ? n : step);
-                point p = info.createPoint();
-                channel c = p.createChannel();
-                channels.add(c);
+                System.arraycopy(augmentedMatrix, startPos, submatrix, 0, endPos);//create submatrix for channel i to process
+
+                var p = info.createPoint(); //create job and pass the arguments
+                var c = p.createChannel();
                 p.execute("Invert");
                 c.write(k);
                 c.write(submatrix);
                 c.write(pivotRow);
+                points[i] = p;
+                channels[i] = c;
             }
 
             //collect results
