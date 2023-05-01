@@ -7,6 +7,16 @@ public class Invert implements AM {
         int pivotNum = amInfo.parent.readInt();
         double[][] matrix = (double[][])amInfo.parent.readObject();
         double[] pivotRow = (double[])amInfo.parent.readObject();
+        for(var i:matrix){
+            for(var j:i){
+                System.out.println(j);
+            }
+        }
+        for(var j:pivotRow){
+            System.out.println(j);
+        }
+        System.out.println(pivotNum);
+        System.out.println("HERE");
         double pivot = pivotRow[pivotNum];
 
         var newMatrix = matrix.clone();
