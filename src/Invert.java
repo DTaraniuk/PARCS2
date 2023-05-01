@@ -2,7 +2,13 @@ import parcs.*;
 
 public class Invert implements AM {
     public void run(AMInfo amInfo) {
-        double[][] matrix = (double[][]) amInfo.data.get("Matrix");
+        double[][] matrix = null;
+        var obj = amInfo.data.get("Matrix");
+        if(obj instanceof double[][])
+            matrix = (double[][])obj;
+        else{
+            System.out.println("matrix not an array");
+        }
         int startRow = amInfo.parent.readInt();
         int endRow = amInfo.parent.readInt();
         int pivotRow = amInfo.parent.readInt();
