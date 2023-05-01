@@ -77,6 +77,7 @@ public class Main implements AM {
             if(matrix == null)System.out.println("matrix is null");
             else System.out.println("matrix not null");
             if(info == null)System.out.println("info null");
+            if(info.data == null)System.out.println("info data null");
             info.data.put("Matrix", matrix);
             info.data.put("Matrix", augmentedMatrix);
 
