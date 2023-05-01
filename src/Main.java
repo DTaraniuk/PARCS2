@@ -74,6 +74,7 @@ public class Main implements AM {
             var points = new point[workers];
             var pivotRow = augmentedMatrix[k];
 
+            System.out.println("workers; " + workers);
             //divide elimination job between channels
             for (int i = 0; i < workers; i++) {
                 var startPos = step*i;
@@ -86,12 +87,12 @@ public class Main implements AM {
 
                 var p = info.createPoint(); //create job and pass the arguments
                 var c = p.createChannel();
-                p.execute("Invert");
                 c.write(k);
                 c.write(submatrix);
                 c.write(pivotRow);
                 points[i] = p;
                 channels[i] = c;
+                points[i].execute("Invert");
             }
 
             //collect results
