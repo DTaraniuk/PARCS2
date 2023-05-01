@@ -46,6 +46,8 @@ public class Main {
             augmentedMatrix[i][n + i] = 1;
         }
 
+        PrintMatrix(augmentedMatrix);
+
         for (int k = 0; k < n; k++) {
             System.out.println("k:" + k);
 
@@ -84,6 +86,8 @@ public class Main {
 
                 var submatrix = new double[step][n];
                 System.arraycopy(augmentedMatrix, startPos, submatrix, 0, endPos-startPos);//create submatrix for channel i to process
+
+                PrintMatrix(submatrix);
 
                 var p = info.createPoint(); //create job and pass the arguments
                 var c = p.createChannel();
