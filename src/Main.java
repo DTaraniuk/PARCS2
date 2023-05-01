@@ -30,6 +30,10 @@ public class Main implements AM {
         int workers = sc.nextInt();
         sc.close();
         int step = (n - 1) / workers + 1;
+        System.out.println("step:");
+        System.out.println(step);
+        System.out.println("n:");
+        System.out.println(n);
 
         info.data = new HashMap();
 
