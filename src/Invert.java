@@ -20,15 +20,11 @@ public class Invert implements AM {
 
         double pivot = pivotRow[pivotNum];
 
-        for (int i = 0; i < matrix.length; i++) {
-            if (matrix[i] == pivotRow) continue;
-            double factor = matrix[i][pivotNum] / pivot;
+        for (var row:matrix) {
+            if (row == pivotRow) continue;
+            double factor = row[pivotNum] / pivot;
             for (int j = pivotNum; j < pivotRow.length; j++) {
-                if (j >= matrix[i].length || j >= matrix[pivotNum].length) {
-                    System.out.println("Error: Index j is out of bounds for the matrix. Please verify the matrix dimensions.");
-                    return;
-                }
-                matrix[i][j] -= factor * matrix[pivotNum][j];
+                row[j] -= factor * pivotRow[j];
             }
         }
 
