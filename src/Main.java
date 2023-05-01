@@ -74,7 +74,6 @@ public class Main implements AM {
 
             for (int channel_num = 0; channel_num < n; channel_num += step) {
                 System.out.println("Channel number " + channel_num + "created");
-                info.data.put("Matrix", augmentedMatrix);
                 point p = info.createPoint();
                 channel c = p.createChannel();
                 channels.add(c);
@@ -82,6 +81,7 @@ public class Main implements AM {
                 c.write(channel_num);
                 c.write(channel_num + step);
                 c.write(k);
+                c.write(augmentedMatrix);
             }
 
             augmentedMatrix = (double[][]) info.data.get("Matrix");

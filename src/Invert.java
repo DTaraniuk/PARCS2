@@ -3,7 +3,7 @@ import parcs.*;
 public class Invert implements AM {
     public void run(AMInfo amInfo) {
         double[][] matrix = null;
-        var obj = amInfo.data.get("Matrix");
+        var obj = amInfo.parent.readObject();
         if(obj instanceof double[][])
             matrix = (double[][])obj;
         else{
