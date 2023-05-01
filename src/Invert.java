@@ -1,13 +1,11 @@
 import parcs.*;
 
 public class Invert implements AM {
-    public static final String MatrixKey = "Matrix";
 
     public Invert(){}
 
-    @Override
     public void run(AMInfo amInfo) {
-        double[][] matrix = (double[][]) amInfo.data.get(MatrixKey);
+        double[][] matrix = (double[][]) amInfo.data.get("Matrix");
         int startRow = amInfo.parent.readInt();
         int endRow = amInfo.parent.readInt();
         int pivotRow = amInfo.parent.readInt();
