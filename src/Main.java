@@ -45,16 +45,6 @@ public class Main {
             augmentedMatrix[i][n + i] = 1;
         }
 
-        var channels = new channel[workers];
-        var points = new point[workers];
-
-        for(int i=0; i<workers; ++i){
-            var p = info.createPoint(); //create job and pass the arguments
-            var c = p.createChannel();
-            points[i] = p;
-            channels[i] = c;
-        }
-
         //PrintMatrix(augmentedMatrix);
 
         for (int k = 0; k < n; k++) {
@@ -81,7 +71,8 @@ public class Main {
                 augmentedMatrix[maxRow] = temp;
             }
 
-
+            var channels = new channel[workers];
+            var points = new point[workers];
             var pivotRow = augmentedMatrix[k];
 
             //System.out.println("workers; " + workers);
@@ -94,10 +85,15 @@ public class Main {
                 System.arraycopy(augmentedMatrix, startPos, submatrix, 0, endPos-startPos);//create submatrix for channel i to process
 
                 //PrintMatrix(submatrix);
+
+                var p = info.createPoint(); //create job and pass the arguments
+                var c = p.createChannel();
+                points[i] = p;
+                channels[i] = c;
                 points[i].execute("Invert");
-                channels[i].write(k);
-                channels[i].write(submatrix);
-                channels[i].write(pivotRow);
+                c.write(k);
+                c.write(submatrix);
+                c.write(pivotRow);
             }
 
             //collect results
