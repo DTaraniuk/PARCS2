@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 import parcs.*;
@@ -28,10 +27,10 @@ public class Main {
         int workers = sc.nextInt();
         sc.close();
         int step = (n - 1) / workers + 1;
-        System.out.println("step:");
-        System.out.println(step);
-        System.out.println("n:");
-        System.out.println(n);
+        //System.out.println("step:");
+        //System.out.println(step);
+        //System.out.println("n:");
+        //System.out.println(n);
 
         info.data = new HashMap();
 
@@ -49,7 +48,7 @@ public class Main {
         PrintMatrix(augmentedMatrix);
 
         for (int k = 0; k < n; k++) {
-            System.out.println("k:" + k);
+            //System.out.println("k:" + k);
 
             // Find pivot row
             int maxRow = k;
@@ -76,13 +75,11 @@ public class Main {
             var points = new point[workers];
             var pivotRow = augmentedMatrix[k];
 
-            System.out.println("workers; " + workers);
+            //System.out.println("workers; " + workers);
             //divide elimination job between channels
             for (int i = 0; i < workers; i++) {
                 var startPos = step*i;
                 var endPos = Math.min((startPos + step), n); //calculate submatrix bounds
-
-                System.out.println("point covering from " + startPos + " to " + endPos);
 
                 var submatrix = new double[endPos-startPos][n];
                 System.arraycopy(augmentedMatrix, startPos, submatrix, 0, endPos-startPos);//create submatrix for channel i to process
@@ -133,7 +130,7 @@ public class Main {
         }
 
         if (invertedMatrix != null) {
-            PrintMatrix(invertedMatrix);
+            writeMatrixToFile(invertedMatrix, "matrix.txt");
         } else {
             System.out.println("Matrix is singular or not square.");
         }
@@ -157,5 +154,21 @@ public class Main {
             }
         }
         return matrix;
+    }
+
+    public void writeMatrixToFile(double[][] matrix, String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (double[] row : matrix) {
+                for (int i = 0; i < row.length; i++) {
+                    writer.write(String.valueOf(row[i]));
+                    if (i < row.length - 1) {
+                        writer.write(" ");
+                    }
+                }
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
