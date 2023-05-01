@@ -20,6 +20,9 @@ public class Main implements AM {
         var input = info.curtask.findFile("input");
         System.out.println("found in run");
         System.out.println(input);
+        for(var file : File.listRoots()){
+            System.out.println(file.getAbsolutePath());
+        }
         Scanner sc = null;
         try {
             sc = new Scanner(new File(input));
