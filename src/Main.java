@@ -88,9 +88,9 @@ public class Main {
                 points[i] = p;
                 channels[i] = c;
                 points[i].execute("Invert");
+                c.write(k);
                 c.write(submatrix);
                 c.write(pivotRow);
-                c.write(k);
             }
 
             //collect results
