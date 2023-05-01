@@ -17,21 +17,14 @@ public class Main implements AM {
     }
 
     public void run(AMInfo info) {
+        //input
         var input = info.curtask.findFile("input");
-        System.out.println("found in run");
-        System.out.println(input);
-        String currentDirectory = System.getProperty("user.dir");
-        System.out.println("Current Directory: " + currentDirectory);
-        for(var file : File.listRoots()){
-            System.out.println(file.getAbsolutePath());
-        }
         Scanner sc = null;
         try {
             sc = new Scanner(new File(input));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        assert sc != null;
         int n = sc.nextInt();
         sc.nextLine();
         int workers = sc.nextInt();
@@ -72,15 +65,7 @@ public class Main implements AM {
             }
 
             ArrayList<channel> channels = new ArrayList<channel>();
-            if(augmentedMatrix == null)System.out.println("aug matrix is null");
-            else System.out.println("aug matrix not null");
 
-
-            if(matrix == null)System.out.println("matrix is null");
-            else System.out.println("matrix not null");
-            if(info == null)System.out.println("info null");
-            if(info.data == null)System.out.println("info data null");
-            info.data.put("Matrix", matrix);
             info.data.put("Matrix", augmentedMatrix);
 
             for (int channel_num = 0; channel_num < n; channel_num += step) {
