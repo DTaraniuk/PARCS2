@@ -1,5 +1,3 @@
-package com.company;
-
 import parcs.*;
 
 public class Invert implements AM {
