@@ -84,7 +84,7 @@ public class Main {
                 var submatrix = new double[endPos-startPos][n];
                 System.arraycopy(augmentedMatrix, startPos, submatrix, 0, endPos-startPos);//create submatrix for channel i to process
 
-                PrintMatrix(submatrix);
+                //PrintMatrix(submatrix);
 
                 var p = info.createPoint(); //create job and pass the arguments
                 var c = p.createChannel();
@@ -122,7 +122,7 @@ public class Main {
             }
         }
 
-        PrintMatrix(augmentedMatrix);
+        //PrintMatrix(augmentedMatrix);
 
         double[][] invertedMatrix = new double[n][n];
         for (int i = 0; i < n; i++) {
@@ -136,14 +136,14 @@ public class Main {
         }
     }
 
-    private void PrintMatrix(double[][] matrix){
+    /*private void PrintMatrix(double[][] matrix){
         for (double[] row : matrix) {
             for (double value : row) {
                 System.out.printf("%8.3f", value);
             }
             System.out.println();
         }
-    }
+    }*/
 
     private double[][] GenerateMatrix(int n){
         var matrix = new double[n][n];
