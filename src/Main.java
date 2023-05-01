@@ -78,7 +78,7 @@ public class Main implements AM {
                 c.write(k);
             }
 
-            augmentedMatrix = (double[][]) info.data.get(Invert.MatrixKey);
+            augmentedMatrix = (double[][]) info.data.get("Matrix");
             if(augmentedMatrix.length!=n || augmentedMatrix[0].length != 2*n){
                 System.out.println("matrix corrupted");
                 return;
