@@ -2,23 +2,14 @@ import parcs.*;
 
 public class Invert implements AM {
     public static final String MatrixKey = "Matrix";
-    private double[][] matrix;
-    private int pivotRow;
-    private int startRow;
-    private int endRow;
 
-    public Invert(double[][] matrix, int pivotRow, int startRow, int endRow, boolean normalize) {
-        this.matrix = matrix;
-        this.pivotRow = pivotRow;
-        this.startRow = startRow;
-        this.endRow = endRow;
-    }
+    public Invert(){}
 
     public void run(AMInfo amInfo) {
-        matrix = (double[][]) amInfo.data.get(MatrixKey);
-        startRow = amInfo.parent.readInt();
-        endRow = amInfo.parent.readInt();
-        pivotRow = amInfo.parent.readInt();
+        double[][] matrix = (double[][]) amInfo.data.get(MatrixKey);
+        int startRow = amInfo.parent.readInt();
+        int endRow = amInfo.parent.readInt();
+        int pivotRow = amInfo.parent.readInt();
 
         int n = matrix.length;
         double pivot = matrix[pivotRow][pivotRow];
