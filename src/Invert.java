@@ -3,20 +3,23 @@ import parcs.*;
 public class Invert implements AM {
     @Override
     public void run(AMInfo amInfo) {
-        System.out.println("HERE");
+        System.out.println("HERE1");
         int pivotNum = amInfo.parent.readInt();
         double[][] matrix = (double[][])amInfo.parent.readObject();
         double[] pivotRow = (double[])amInfo.parent.readObject();
+        System.out.println("HERE2");
         for(var i:matrix){
             for(var j:i){
                 System.out.println(j);
             }
         }
+        System.out.println("HERE3");
         for(var j:pivotRow){
             System.out.println(j);
         }
+        System.out.println("HERE4");
         System.out.println(pivotNum);
-        System.out.println("HERE");
+        System.out.println("HERE5");
         double pivot = pivotRow[pivotNum];
 
         var newMatrix = matrix.clone();
