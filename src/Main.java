@@ -84,7 +84,7 @@ public class Main {
 
                 System.out.println("point covering from " + startPos + " to " + endPos);
 
-                var submatrix = new double[startPos-endPos][n];
+                var submatrix = new double[endPos-startPos][n];
                 System.arraycopy(augmentedMatrix, startPos, submatrix, 0, endPos-startPos);//create submatrix for channel i to process
 
                 PrintMatrix(submatrix);
