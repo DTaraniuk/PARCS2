@@ -38,6 +38,8 @@ public class Main implements AM {
         sc.close();
         int step = (n - 1) / workers + 1;
 
+        info.data = new HashMap();
+
         double[][] matrix = GenerateMatrix(n);
 
         // Create augmented matrix [A | I]
