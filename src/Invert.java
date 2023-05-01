@@ -5,6 +5,7 @@ public class Invert implements AM {
 
     public Invert(){}
 
+    @Override
     public void run(AMInfo amInfo) {
         double[][] matrix = (double[][]) amInfo.data.get(MatrixKey);
         int startRow = amInfo.parent.readInt();
