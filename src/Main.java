@@ -17,9 +17,10 @@ public class Main implements AM {
     }
 
     public void run(AMInfo info) {
+        var input = info.curtask.findFile("input");
         Scanner sc = null;
         try {
-            sc = new Scanner(new File(info.curtask.findFile("input")));
+            sc = new Scanner(new File(input));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
