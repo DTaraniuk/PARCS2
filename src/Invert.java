@@ -1,6 +1,7 @@
 import parcs.*;
 
 public class Invert implements AM {
+    @Override
     public void run(AMInfo amInfo) {
         System.out.println("HERE");
         int pivotNum = amInfo.parent.readInt();
