@@ -71,23 +71,37 @@ public class Main implements AM {
             }
 
             ArrayList<channel> channels = new ArrayList<channel>();
+            var pivotRow = augmentedMatrix[k];
 
-            for (int channel_num = 0; channel_num < n; channel_num += step) {
-                System.out.println("Channel number " + channel_num + "created");
+            for (int pos = 0; pos < n; pos += step) {
+                System.out.println("Channel number " + pos + "created");
+                var submatrix = new double[step][n];
+                System.arraycopy(augmentedMatrix, pos, submatrix, 0, pos+step>n ? n : step);
                 point p = info.createPoint();
                 channel c = p.createChannel();
                 channels.add(c);
                 p.execute("Invert");
-                c.write(channel_num);
-                c.write(channel_num + step);
                 c.write(k);
-                c.write(augmentedMatrix);
+                c.write(submatrix);
+                c.write(pivotRow);
             }
 
-            if(augmentedMatrix.length!=n || augmentedMatrix[0].length != 2*n){
+            //collect results
+            int end = 0;
+            for(var channel : channels){
+                var rows = (double[][])channel.readObject();
+                if(rows.length==0 || rows[0].length != 2*n){
+                    System.out.println("matrix corrupted");
+                    return;
+                }
+                System.arraycopy(rows, 0, augmentedMatrix, end, rows.length);
+                end+=rows.length;
+            }
+            if(end!= augmentedMatrix.length){
                 System.out.println("matrix corrupted");
                 return;
             }
+
         }
 
         // Normalize diagonal elements
