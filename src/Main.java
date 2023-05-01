@@ -9,6 +9,8 @@ public class Main implements AM {
 
     public static void main(String[] args) {
         task t = new task();
+        t.findFile("input");
+        System.out.println("found in main");
         t.addJarFile("Invert.jar");
         new Main().run(new AMInfo(t, (channel)null));
         t.end();
