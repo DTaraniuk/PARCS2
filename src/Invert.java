@@ -3,34 +3,35 @@ import parcs.*;
 public class Invert implements AM {
     @Override
     public void run(AMInfo amInfo) {
-        System.out.println("HERE1");
+        //input
         int pivotNum = amInfo.parent.readInt();
-        double[][] matrix = (double[][])amInfo.parent.readObject();
-        double[] pivotRow = (double[])amInfo.parent.readObject();
-        System.out.println("HERE2");
-        for(var i:matrix){
-            for(var j:i){
-                System.out.println(j);
-            }
+        if (pivotNum < 0) {
+            System.out.println("Error: pivotNum is negative. Please provide a valid index.");
+            return;
         }
-        System.out.println("HERE3");
-        for(var j:pivotRow){
-            System.out.println(j);
-        }
-        System.out.println("HERE4");
-        System.out.println(pivotNum);
-        System.out.println("HERE5");
-        double pivot = pivotRow[pivotNum];
 
-        var newMatrix = matrix.clone();
+        double[][] matrix = (double[][])amInfo.parent.readObject();
+        if (pivotNum >= matrix.length) {
+            System.out.println("Error: pivotNum is greater than or equal to the number of rows in the matrix. Please provide a valid index.");
+            return;
+        }
+
+        double[] pivotRow = (double[])amInfo.parent.readObject();
+
+        double pivot = pivotRow[pivotNum];
 
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[i] == pivotRow) continue;
             double factor = matrix[i][pivotNum] / pivot;
             for (int j = pivotNum; j < pivotRow.length; j++) {
-                newMatrix[i][j] -= factor * matrix[pivotNum][j];
+                if (j >= matrix[i].length || j >= matrix[pivotNum].length) {
+                    System.out.println("Error: Index j is out of bounds for the matrix. Please verify the matrix dimensions.");
+                    return;
+                }
+                matrix[i][j] -= factor * matrix[pivotNum][j];
             }
         }
-        amInfo.parent.write(newMatrix);
+
+        amInfo.parent.write(matrix);
     }
 }
