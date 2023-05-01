@@ -4,13 +4,11 @@ import java.util.*;
 
 import parcs.*;
 
-public class Main implements AM {
+public class Main {
     private static final double EPSILON = 1e-10;
 
     public static void main(String[] args) {
         task t = new task();
-        t.findFile("input");
-        System.out.println("found in main");
         t.addJarFile("Invert.jar");
         new Main().run(new AMInfo(t, (channel)null));
         t.end();
@@ -87,12 +85,12 @@ public class Main implements AM {
 
                 var p = info.createPoint(); //create job and pass the arguments
                 var c = p.createChannel();
-                c.write(submatrix);
-                c.write(pivotRow);
-                c.write(k);
                 points[i] = p;
                 channels[i] = c;
                 points[i].execute("Invert");
+                c.write(submatrix);
+                c.write(pivotRow);
+                c.write(k);
             }
 
             //collect results
