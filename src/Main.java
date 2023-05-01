@@ -20,6 +20,8 @@ public class Main implements AM {
         var input = info.curtask.findFile("input");
         System.out.println("found in run");
         System.out.println(input);
+        String currentDirectory = System.getProperty("user.dir");
+        System.out.println("Current Directory: " + currentDirectory);
         for(var file : File.listRoots()){
             System.out.println(file.getAbsolutePath());
         }
