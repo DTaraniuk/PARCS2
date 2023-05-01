@@ -87,9 +87,9 @@ public class Main implements AM {
 
                 var p = info.createPoint(); //create job and pass the arguments
                 var c = p.createChannel();
-                c.write(k);
                 c.write(submatrix);
                 c.write(pivotRow);
+                c.write(k);
                 points[i] = p;
                 channels[i] = c;
                 points[i].execute("Invert");
