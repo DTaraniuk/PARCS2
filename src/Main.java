@@ -36,7 +36,7 @@ public class Main {
 
         double[][] matrix = GenerateMatrix(n);
 
-        PrintMatrix(matrix);
+        //PrintMatrix(matrix);
 
         // Create augmented matrix [A | I]
         double[][] augmentedMatrix = new double[n][2 * n];
@@ -45,7 +45,7 @@ public class Main {
             augmentedMatrix[i][n + i] = 1;
         }
 
-        PrintMatrix(augmentedMatrix);
+        //PrintMatrix(augmentedMatrix);
 
         for (int k = 0; k < n; k++) {
             //System.out.println("k:" + k);
