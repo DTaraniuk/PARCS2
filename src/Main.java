@@ -73,6 +73,7 @@ public class Main implements AM {
             info.data.put("Matrix", augmentedMatrix);
 
             for (int channel_num = 0; channel_num < n; channel_num += step) {
+                System.out.println("Channel number " + channel_num + "created");
                 point p = info.createPoint();
                 channel c = p.createChannel();
                 channels.add(c);
