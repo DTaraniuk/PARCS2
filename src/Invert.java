@@ -2,6 +2,7 @@ import parcs.*;
 
 public class Invert implements AM {
     public void run(AMInfo amInfo) {
+        System.out.println("HERE");
         int pivotNum = amInfo.parent.readInt();
         double[][] matrix = (double[][])amInfo.parent.readObject();
         double[] pivotRow = (double[])amInfo.parent.readObject();
