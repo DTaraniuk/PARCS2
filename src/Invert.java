@@ -11,6 +11,8 @@ public class Invert implements AM {
         double pivot = pivotRow[pivotNum];
 
         for (var row:matrix) {
+            System.out.println("row.l: " + row.length);
+            System.out.println("pivotRow.l: " + pivotRow.length);
             if (row == pivotRow) continue;
             double factor = row[pivotNum] / pivot;
             for (int j = pivotNum; j < pivotRow.length; j++) {
