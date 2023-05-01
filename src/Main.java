@@ -47,6 +47,8 @@ public class Main implements AM {
         }
 
         for (int k = 0; k < n; k++) {
+            System.out.println("k:" + k);
+
             // Find pivot row
             int maxRow = k;
             for (int i = k + 1; i < n; i++) {
@@ -70,10 +72,9 @@ public class Main implements AM {
 
             ArrayList<channel> channels = new ArrayList<channel>();
 
-            info.data.put("Matrix", augmentedMatrix);
-
             for (int channel_num = 0; channel_num < n; channel_num += step) {
                 System.out.println("Channel number " + channel_num + "created");
+                info.data.put("Matrix", augmentedMatrix);
                 point p = info.createPoint();
                 channel c = p.createChannel();
                 channels.add(c);
