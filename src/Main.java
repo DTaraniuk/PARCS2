@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 import parcs.*;
@@ -13,9 +15,17 @@ public class Main implements AM {
     }
 
     public void run(AMInfo info) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int workers = in.nextInt();
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new File("input"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert sc != null;
+        int n = sc.nextInt();
+        sc.nextLine();
+        int workers = sc.nextInt();
+        sc.close();
         int step = (n - 1) / workers + 1;
 
         double[][] matrix = GenerateMatrix(n);
